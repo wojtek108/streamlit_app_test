@@ -1,34 +1,17 @@
 import streamlit as st
 import pandas as pd
 
+st.set_page_config(layout="wide")
+
 header = st.container()
 dataExploration = st.container() 
-newFeatures = st.container() 
-modelTraining = st.container()
 
 with header:
-    st.title("Welcome to my app")
-    st.text('In this project I look into streamlit app')
+    st.title("Workouts review")
+    st.text('A simple streamlit webapp with dataframe containing my workout loggs')
 
 with dataExploration:
-    st.header('Sample dataset')
-    data = pd.read_csv('data/student.csv')
-    st.write(data.head(50))
-    st.header('Sample bar chart')
-    mark_distribution = pd.DataFrame(data['mark'].value_counts()).head(50)
-    st.bar_chart(mark_distribution)
+    data = pd.read_csv('data/data.csv')
+    reversed_data = data[::-1]  # Reverse the order of the dataframe
+    st.dataframe(reversed_data.head(1050))
 
-
-with newFeatures:
-    st.header('Some text from markdown')
-    st.markdown('**This text is in bold**') 
-
-
-
-with modelTraining:
-    st.header('Columns in webapp UI')
-    first_col, second_col = st.columns(2)
-
-    first_col.subheader('Column I')
-    second_col.subheader('Column II')
-    
