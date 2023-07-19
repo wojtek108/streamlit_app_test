@@ -15,7 +15,8 @@ with dataExploration:
     data = pd.read_csv('data/data.csv')
     # Convert 'Date' column to datetime format
     data['Date'] = pd.to_datetime(data['Date'], errors='coerce')      
-    reversed_data = data[::-1]  # Reverse the order of the dataframe
+    # Reverse the order of the dataframe
+    reversed_data = data[::-1]  
     st.dataframe(reversed_data.head(1050))
 
     st.subheader('Chart: Workouts per Month')
